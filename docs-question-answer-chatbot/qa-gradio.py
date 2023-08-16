@@ -4,7 +4,7 @@ import pickle
 import gradio as gr
 import openai
 from langchain.chains import RetrievalQAWithSourcesChain
-from langchain.chat_models import ChatOpenAI
+from langchain.chat_models import PromptLayerChatOpenAI
 from langchain.prompts.chat import (
     ChatPromptTemplate,
     HumanMessagePromptTemplate,
@@ -41,7 +41,7 @@ prompt = ChatPromptTemplate.from_messages(messages)
 def get_chain(store):
     chain_type_kwargs = {"prompt": prompt}
     chain = RetrievalQAWithSourcesChain.from_chain_type(
-        ChatOpenAI(temperature=0),
+        PromptLayerChatOpenAI(temperature=0),
         chain_type="stuff",
         retriever=store.as_retriever(),
         chain_type_kwargs=chain_type_kwargs,

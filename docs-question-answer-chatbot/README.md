@@ -6,7 +6,8 @@ https://www.paepper.com/blog/posts/build-q-and-a-bot-of-your-website-using-langc
 
 ### Prerequisites
 - Go to "https://openai.com" , login and generate a API key.
-- Set the API key as an environmental variable: `export OPENAI_API_KEY="xxxx-xxxx-xxxx-xxxx"`
+- Set the OpenAi API key as an environmental variable: `export OPENAI_API_KEY="xxxx-xxxx-xxxx-xxxx"`
+- To enable prompt analytics set the promptlayer API key as an environment variable: `export PROMPTLAYER_API_KEY="pl_xx-xxxx-xxxx-xxxx"`
 - Minimum version requirement Python 3.8.3.
 
 ### Quickstart
