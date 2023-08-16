@@ -11,6 +11,17 @@ The portswigger.net website has a lot more than 100k tokens, so the API cost to 
 Once the call completes we will have stored the resulting embeddings in a FAISS store as 'faiss_store.pkl'.
 All of the above steps happen in the ```ps-docs-chatbot.py```
 
+#### Prompt Analytics
+
+I'm trialing https://promptlayer.com/ to surface some analytics around our prompt and api usage. 
+[Avg latency; Total cost; Requests & tokens; total prompts; Models; All time cost by prompt template]
+https://docs.promptlayer.com/why-promptlayer/how-it-works
+
+PromptLayer is a devtool that allows you to track, manage, and share your GPT prompt engineering. It acts as a middleware between your code and OpenAI’s python library, recording all your API requests and saving relevant metadata for easy exploration and search in the PromptLayer dashboard.
+
+​
+How it Works
+PromptLayer works by wrapping your OpenAI API requests and logging data about them after they are sent. This is all done from your machine, your API key is never sent. This means that it does not interfere with the functionality of your existing codebase or require any changes to your application’s architecture. All you need to do is add PromptLayer as an add-on to your existing LLM application and start making requests as usual.
 #### Note: 
 
 It can take a hot minute for the call to embedd our data to complete, circa 30 minutes, you might also see a RateLimitError. 
