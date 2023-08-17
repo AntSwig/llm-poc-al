@@ -2,6 +2,7 @@ import os
 
 from langchain import LLMChain
 from langchain.llms import OpenAI
+
 # Chat specific components
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts.prompt import PromptTemplate

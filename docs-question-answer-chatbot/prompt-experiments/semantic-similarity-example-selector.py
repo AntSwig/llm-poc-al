@@ -3,8 +3,7 @@ import os
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.llms import OpenAI
 from langchain.prompts import FewShotPromptTemplate, PromptTemplate
-from langchain.prompts.example_selector import \
-    SemanticSimilarityExampleSelector
+from langchain.prompts.example_selector import SemanticSimilarityExampleSelector
 from langchain.vectorstores import FAISS
 
 llm = OpenAI(

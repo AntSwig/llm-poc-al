@@ -5,8 +5,7 @@ import os
 import boto3
 import gradio as gr
 import sagemaker
-from sagemaker.huggingface import (HuggingFaceModel,
-                                   get_huggingface_llm_image_uri)
+from sagemaker.huggingface import HuggingFaceModel, get_huggingface_llm_image_uri
 
 os.environ["SAGEMAKER_CONTAINER_LOG_LEVEL"] = "DEBUG"
 

@@ -1,27 +1,50 @@
-import os
 import pickle
-
 import gradio as gr
-import openai
 from langchain.chains import RetrievalQAWithSourcesChain
-from langchain.chat_models import ChatOpenAI
-from langchain.memory import ConversationBufferMemory
+from langchain.chat_models import PromptLayerChatOpenAI
 from langchain.prompts.chat import (
     ChatPromptTemplate,
     HumanMessagePromptTemplate,
     SystemMessagePromptTemplate,
 )
 
-system_template = """You are a chatbot having a conversation with a human.
 
-Given the following extracted parts of a long document and a question, create a final answer.
+system_template = """
+You are an AI assistant for burpsuite.
+You are given the following extracted parts of a long document and a question. Provide an answer in the form of a bcheck script.
+Use the following pieces of context to answer the question:
 
-{context}
+{summaries}
 
-{chat_history}
-Human: {human_input}
-Chatbot:"""
+If you don't know the answer, just say that you don't know, don't try to make up an answer.
 
+Example of your response should be:
+
+```
+metadata:
+    language: v1-beta
+    name: "Request-level collaborator based"
+    description: "Blind SSRF with out-of-band detection"
+    author: "Carlos Montoya"
+
+given request then
+    send request:
+        headers:
+            "Referer": {{generate_collaborator_address()}}
+
+    if http interactions then
+        report issue:
+            severity: high
+            confidence: firm
+            detail: "This site fetches arbitrary URLs specified in the Referer header."
+            remediation: "Ensure that the site does not directly request URLs from the Referer header."
+    end if
+```
+Sources:
+1. abc
+2. xyz
+
+"""
 messages = [
     SystemMessagePromptTemplate.from_template(system_template),
     HumanMessagePromptTemplate.from_template("{question}"),
@@ -32,12 +55,11 @@ prompt = ChatPromptTemplate.from_messages(messages)
 def get_chain(store):
     chain_type_kwargs = {"prompt": prompt}
     chain = RetrievalQAWithSourcesChain.from_chain_type(
-        ChatOpenAI(temperature=0),
+        PromptLayerChatOpenAI(temperature=0),
         chain_type="stuff",
         retriever=store.as_retriever(),
         chain_type_kwargs=chain_type_kwargs,
         reduce_k_below_max_tokens=True,
-        memory=memory,
     )
     return chain
 

@@ -7,6 +7,7 @@ https://mp-weixin-qq-com.translate.goog/s/j7EHftzPdTf84lBzxpLb_Q?_x_tr_sl=auto&_
 ### Prerequisites
 - Go to "https://openai.com" , login and generate a API key.
 - Set the API key as an environmental variable: `export OPENAI_API_KEY="xxxx-xxxx-xxxx-xxxx"`
+- To enable prompt analytics set the promptlayer API key as an environment variable: `export PROMPTLAYER_API_KEY="pl_xx-xxxx-xxxx-xxxx"`
 - Minimum version requirement Python 3.8.3.
 
 ### Local development
@@ -20,6 +21,14 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 python bcheck.py
+```
+
+Then query the data:
+```sh
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python qa-bcheck.py
 ```
 
 Expect output like:

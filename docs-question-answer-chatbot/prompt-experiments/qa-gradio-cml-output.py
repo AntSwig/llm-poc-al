@@ -5,9 +5,11 @@ import pickle
 import gradio as gr
 from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.chat_models import ChatOpenAI
-from langchain.prompts.chat import (ChatPromptTemplate,
-                                    HumanMessagePromptTemplate,
-                                    SystemMessagePromptTemplate)
+from langchain.prompts.chat import (
+    ChatPromptTemplate,
+    HumanMessagePromptTemplate,
+    SystemMessagePromptTemplate,
+)
 
 system_template = """Use the following pieces of context to answer the users question.
 If you don't know the answer, just say "Hmm..., I'm not sure.", don't try to make up an answer.
