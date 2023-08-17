@@ -17,6 +17,8 @@ Use the following pieces of context to answer the question:
 {summaries}
 
 If you don't know the answer, just say that you don't know, don't try to make up an answer.
+ALWAYS return a "Sources" part in your answer.
+The "Sources" part should be a reference to the source of the document from which you got your answer.
 
 Example of your response should be:
 
@@ -39,10 +41,11 @@ given request then
             detail: "This site fetches arbitrary URLs specified in the Referer header."
             remediation: "Ensure that the site does not directly request URLs from the Referer header."
     end if
-```
+
 Sources:
 1. abc
 2. xyz
+```
 
 """
 messages = [
