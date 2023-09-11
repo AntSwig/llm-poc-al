@@ -1,6 +1,4 @@
-import os
 import pickle
-
 import requests
 import xmltodict
 from bs4 import BeautifulSoup
