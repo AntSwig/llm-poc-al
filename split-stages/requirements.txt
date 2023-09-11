@@ -1,0 +1,10 @@
+xmltodict<=0.13.0
+requests<=2.31.0
+bs4<=0.0.1
+langchain<=0.0.238
+faiss-cpu<=1.7.4
+gradio<=3.38.0
+gradio_client<=0.2.10
+tiktoken<=0.4.0
+openai<=0.27.8
+promptlayer<=0.1.98
